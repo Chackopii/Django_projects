@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-5 p-3" style="margin-bottom:100px;">
+  <h1 class="section-header align-center">Billing Details</h1>
+  <form method="POST" class="product-item">
+       {% csrf_token %}
+      <!-- Address Field -->
+      <div class="mb-3">
+        <label for="address" class="form-label">Address</label>
+        <textarea class="form-control" id="address" name="address" rows="3" placeholder="Enter your address"></textarea>
+      </div>
+
+      <!-- Phone Field -->
+      <div class="mb-3">
+        <label for="phone" class="form-label">Phone</label>
+        <input type="tel" class="form-control" id="phone" name="phone" placeholder="Enter your phone number">
+      </div>
+
+      <!-- Pin Field -->
+      <div class="mb-3">
+        <label for="pin" class="form-label">Pin</label>
+        <input type="text" class="form-control" id="pin" name="pin" placeholder="Enter your pin code">
+      </div>
+
+      <!-- Submit Button -->
+    <div class="mb-3 mx-auto">
+      <input class="btn btn-primary" type="submit" value="Submit">
+    </div>
+    </form>
+
+</div>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<!--{{category}}-->
+<!--{{product}}-->
+<div class="container-fluid text-center">
+    <img src="{{category.img.url}}" class="p-4" style="width:90%; max-width: 800px;">
+</div>
+
+<section id="popular-books" class="bookshelf py-5 my-5">
+		<div class="container">
+			<div class="row">
+                <div class="col-md-12">
+					<div class="section-header align-center">
+						<div class="title">
+                            <h2 class="section-title">{{category.name}}</h2>
+						</div>
+						<span>{{category.des}}</span>
+					</div>
+					<h2 class="section-title">New Stocks</h2>
+
+<div class="tab-content mt-5">
+						<div id="all-genre" data-tab-content class="active">
+							<div class="row">
+                                {% for i in product %}
+								<div class="col-md-3">
+									<div class="product-item">
+										<figure class="product-style">
+<!--											<a href="{% url 'Shop:detail' i.id %}" class="btn btn-primary detail-button">Detail</a>-->
+											<img src="{{i.img.url}}" alt="Books"  class="product-item" style="height:365px;">
+											<button type="button"  class="add-to-cart"  onclick="location.href= '{% url 'Shop:detail' i.id %}'">Detail</button>
+										</figure>
+										<figcaption>
+											<h3>{{i.name}}</h3>
+<!--											<span>Adam Silber</span>-->
+											<div class="item-price">₹ {{i.price}}</div>
+										</figcaption>
+									</div>
+								</div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
+{% endblock %}

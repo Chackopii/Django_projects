@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+ <div class="container mt-3 w-50">
+        <h1 class="section-header text-center">Add Stock</h1>
+        <div class="d-flex justify-content-center">
+            <div class="col-md-9">
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label class="form-label">Stock</label>
+                        <input type="number" class="form-control" name="stock" value="{{ product.stock }}" required>
+                    </div>
+                    <div class="mb-3 mx-auto text-center">
+                         <input class="btn btn-primary" type="submit" value="Submit">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

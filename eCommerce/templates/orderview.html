@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container mt-5 p-3 bg-light" style="margin-bottom: 100px;">
+    <h2 class="text-center mb-4">Your Order</h2>
+    <h2 class="text-center p-3 bg-primary rounded-top">Customer Name: <b>{{ user.username }}</b></h2>
+    <center>
+        {% if orders %}
+            {% for i in orders %}
+                <div class="card mb-4 shadow-lg border-0">
+                    <!-- Customer Name -->
+
+                    <div class="row g-0 align-items-center">
+                        <!-- Product Image -->
+                        <div class="col-md-4 text-center p-3">
+                            <img src="{{ i.product.img.url }}" class="img-fluid rounded shadow-sm"
+                                 alt="{{ i.product.name }}" width="200px">
+                        </div>
+                        <!-- Order Details -->
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title text-primary">Product Name: <b>{{ i.product.name }}</b></h5>
+                                <p class="card-text text-dark">Price: <span class="fw-bold text-success">${{ i.product.price }}</span></p>
+                                <p class="card-text text-dark">Items: <span class="fw-bold">{{ i.no_of_items }}</span></p>
+                                <p class="card-text text-dark">Order ID: <span class="fw-bold">{{ i.order_id }}</span></p>
+                                <p class="card-text text-dark">Order Date: <span class="fw-bold">{{ i.ordered_date }}</span></p>
+                                <p class="card-text text-success">Delivery Status:
+                                    <span class="badge bg-info text-dark">{{ i.delivery_status }}</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p class="text-center mt-4 text-muted">No orders found.</p>
+        {% endif %}
+    </center>
+</div>
+
+{% endblock %}

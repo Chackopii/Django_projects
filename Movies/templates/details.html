@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Movie Info</h1>
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <img src="{{film.image.url}}" alt="Movie Poster" class="img-thumbnail mb-4"> <!-- Added mb-4 for margin-bottom -->
+        </div>
+    </div>
+    <div class="row justify-content-center"> <!-- Added justify-content-center to center the table -->
+        <div class="col-md-9">
+            <table class="table table-bordered">
+                <tbody>
+                    <tr>
+                        <td>Movie</td>
+                        <td>{{film.title}}</td>
+                    </tr>
+                    <tr>
+                        <td>Synopsis</td>
+                        <td>{{film.description}}</td>
+                    </tr>
+                    <tr>
+                        <td>Language</td>
+                        <td>{{film.language}}</td>
+                    </tr>
+                    <tr>
+                        <td>Release Year</td>
+                        <td>{{film.year}}</td>
+                    </tr>
+                    <tr>
+                        <td><a href="{% url 'update' film.id %}" class="btn btn-secondary text-light">Edit</a></td>
+                        <td><a href="{% url 'delete' film.id %}" class="btn btn-danger text-light">Delete</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

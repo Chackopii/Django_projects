@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-5 p-3" style="margin-bottom:100px;">
+  <h1 class="text-center">Shopping Cart</h1>
+  <div class="row">
+    <div class="col-8 fs-5"><table class="product-entry table table-striped table-bordered">
+      <thead>
+        <tr>
+          <th colspan="8" scope="col" class="bg-white text-center">Cart</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in cart %}
+        <tr>
+          <td><img src="{{ item.product.img.url }}" height="100px" width="100px"></td>
+          <td>{{ item.product.category }}</td>
+          <td>{{ item.product.name }}</td>
+          <td>Unit Price:₹ {{ item.product.price }}<br>Quantity:{{ item.quantity }}<br>Stock:{{item.product.stock}}</td>
+          <td>SubTotal:₹ {{ item.total_price }}</td>
+          <td>
+            {% if item.product.stock > 0 %}
+            <a href="{% url 'Cart:add_cart' item.product.id %}" ><i class="fa-solid fa-circle-plus text-success"></i></a>
+            <a href="{% url 'Cart:delete_cart_item' item.product.id %}"><i class="fa-solid fa-circle-minus text-danger"></i></a>
+            <a href="{% url 'Cart:delete_cart' item.product.id %}" ><i class="fa-regular fa-trash-can"></i></a></td>
+            {% else %}
+            <a href="{% url 'Cart:delete_cart_item' item.product.id %}"><i class="fa-solid fa-circle-minus text-danger"></i></a>
+            <a href="{% url 'Cart:delete_cart' item.product.id %}" ><i class="fa-regular fa-trash-can"></i></a></td>
+            {% endif %}
+          </tr>
+
+      </tbody>
+      {% endfor %}
+      </table>
+    </div>
+    <div class="col-4 fs-5"><table class="product-entry table table-striped table-bordered">
+        <thead class="">
+        <tr>
+          <th colspan="4" scope="col" class="bg-white text-center">Check out</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td colspan="4">Total:₹ {{ total }}</td>
+      </tr>
+      </tbody>
+      </table>
+      <div class="d-flex justify-content-between">
+         <a href="{% url 'Cart:orderform' %}" class="btn btn-accent-arrow btn-success text-light" >Place order</a>
+         <a href="{% url 'Shop:categories' %}" class="btn btn-accent-arrow btn-secondary text-light">Back to Shopping</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

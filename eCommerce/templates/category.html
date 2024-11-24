@@ -1,0 +1,175 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<style>
+    .img-fluid {
+        height: auto; /* Maintain aspect ratio */
+    }
+</style>
+<section id="billboard">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+
+                <button class="prev slick-arrow">
+                    <i class="icon icon-arrow-left"></i>
+                </button>
+
+                <div class="main-slider pattern-overlay">
+                    <div class="slider-item d-flex align-items-center">
+                        <div class="banner-content">
+                            <h2 class="banner-title">Google Pixel</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu feugiat amet, libero
+                                ipsum enim pharetra hac. Urna commodo, lacus ut magna velit eleifend. Amet, quis
+                                urna, a eu.</p>
+                            <div class="btn-wrap">
+                                <a href="#" class="btn btn-outline-accent btn-accent-arrow">Read More<i
+                                        class="icon icon-ns-arrow-right"></i></a>
+                            </div>
+                        </div><!--banner-content-->
+                        <img src="{% static 'images/phone banner.jpg' %}" alt="banner" class="img-fluid mb-5" style="width:20%">
+                    </div><!--slider-item-->
+
+                    <div class="slider-item d-flex align-items-center">
+                        <div class="banner-content">
+                            <h2 class="banner-title">Casuals and Formals</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu feugiat amet, libero
+                                ipsum enim pharetra hac. Urna commodo, lacus ut magna velit eleifend. Amet, quis
+                                urna, a eu.</p>
+                            <div class="btn-wrap">
+                                <a href="#" class="btn btn-outline-accent btn-accent-arrow">Read More<i
+                                        class="icon icon-ns-arrow-right"></i></a>
+                            </div>
+                        </div><!--banner-content-->
+                        <img src="{% static 'images/cloths banner.jpg' %}" alt="banner" class="img-fluid mb-5" style="width:20%">
+                    </div><!--slider-item-->
+
+                    <div class="slider-item d-flex align-items-center">
+                        <div class="banner-content">
+                            <h2 class="banner-title">Fresh and Safe</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu feugiat amet, libero
+                                ipsum enim pharetra hac. Urna commodo, lacus ut magna velit eleifend. Amet, quis
+                                urna, a eu.</p>
+                            <div class="btn-wrap">
+                                <a href="#" class="btn btn-outline-accent btn-accent-arrow">Read More<i
+                                        class="icon icon-ns-arrow-right"></i></a>
+                            </div>
+                        </div><!--banner-content-->
+                        <img src="{% static 'images/grocery_banner.jpg' %}" alt="banner" class="img-fluid mb-5" style="width:20%">
+                    </div><!--slider-item-->
+
+                </div><!--slider-->
+
+                <button class="next slick-arrow">
+                    <i class="icon icon-arrow-right"></i>
+                </button>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+	<section id="featured-books" class="py-5 my-5">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+
+					<div class="section-header align-center">
+						<div class="title">
+							<span>Some quality items</span>
+						</div>
+						<h2 class="section-title">Our Collections</h2>
+						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+							Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+							when an unknown printer took a galley of type and scrambled it to make a type
+							specimen book. It has survived not only five centuries, but also the leap into
+							electronic typesetting, remaining essentially unchanged. It was popularised in
+							the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
+							and more recently with desktop publishing software like Aldus PageMaker including
+							versions of Lorem Ipsum.</p>
+					</div>
+
+					<div class="product-list" data-aos="fade-up">
+						<div class="row">
+
+<!--							<div class="col-md-3">-->
+<!--								<div class="product-item">-->
+<!--									<figure class="product-style">-->
+<!--										<img src="{% static 'images/product-item1.jpg' %}" alt="Books" class="product-item">-->
+<!--										<button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add to-->
+<!--											Cart</button>-->
+<!--									</figure>-->
+<!--&lt;!&ndash;									<figcaption>&ndash;&gt;-->
+<!--&lt;!&ndash;										<h3>Simple way of piece life</h3>&ndash;&gt;-->
+<!--&lt;!&ndash;										<span>Armor Ramsey</span>&ndash;&gt;-->
+<!--&lt;!&ndash;										<div class="item-price">$ 40.00</div>&ndash;&gt;-->
+<!--&lt;!&ndash;									</figcaption>&ndash;&gt;-->
+<!--								</div>-->
+<!--							</div>-->
+							{% for items in categories %}
+							<div class="col-4">
+								<div class="product-item">
+									<figure class="product-style">
+										<img src="{{items.img.url}}" alt="products" class="product-item" style="height:365px;">
+										<a href="{% url 'Shop:product' items.id %}"><button type="button" class="add-to-cart">Go to {{items.name}}</button></a>
+									</figure>
+									<figcaption>
+										<h3>{{items.name}}</h3>
+<!--										<span>Sanchit Howdy</span>-->
+<!--										<div class="item-price">$ 38.00</div>-->
+									</figcaption>
+								</div>
+							</div>
+							{% endfor %}
+
+<!--							<div class="col-md-3">-->
+<!--								<div class="product-item">-->
+<!--									<figure class="product-style">-->
+<!--										<img src="{% static 'images/product-item3.jpg' %}" alt="Books" class="product-item">-->
+<!--										<button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add to-->
+<!--											Cart</button>-->
+<!--									</figure>-->
+<!--&lt;!&ndash;									<figcaption>&ndash;&gt;-->
+<!--&lt;!&ndash;										<h3>The lady beauty Scarlett</h3>&ndash;&gt;-->
+<!--&lt;!&ndash;										<span>Arthur Doyle</span>&ndash;&gt;-->
+<!--&lt;!&ndash;										<div class="item-price">$ 45.00</div>&ndash;&gt;-->
+<!--&lt;!&ndash;									</figcaption>&ndash;&gt;-->
+<!--								</div>-->
+<!--							</div>-->
+
+<!--							<div class="col-md-3">-->
+<!--								<div class="product-item">-->
+<!--									<figure class="product-style">-->
+<!--										<img src="{% static 'images/product-item4.jpg' %}" alt="Books" class="product-item">-->
+<!--										<button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add to-->
+<!--											Cart</button>-->
+<!--									</figure>-->
+<!--&lt;!&ndash;									<figcaption>&ndash;&gt;-->
+<!--&lt;!&ndash;										<h3>Once upon a time</h3>&ndash;&gt;-->
+<!--&lt;!&ndash;										<span>Klien Marry</span>&ndash;&gt;-->
+<!--&lt;!&ndash;										<div class="item-price">$ 35.00</div>&ndash;&gt;-->
+<!--&lt;!&ndash;									</figcaption>&ndash;&gt;-->
+<!--								</div>-->
+<!--							</div>-->
+
+						</div><!--ft-books-slider-->
+					</div><!--grid-->
+
+
+				</div><!--inner-content-->
+			</div>
+
+			<div class="row">
+				<div class="col-md-12">
+
+					<div class="btn-wrap align-right">
+						<a href="#" class="btn-accent-arrow">View all products <i
+								class="icon icon-ns-arrow-right"></i></a>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</section>
+
+{% endblock %}

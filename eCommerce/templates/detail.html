@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+	<section id="best-selling" class="leaf-pattern-overlay">
+		<div class="corner-pattern-overlay"></div>
+		<div class="container">
+			<div class="row justify-content-center">
+
+				<div class="col-md-8">
+
+					<div class="row">
+
+						<div class="col-md-6">
+							<figure class="products-thumb">
+								<img src="{{product.img.url}}" alt="book" class="single-image">
+							</figure>
+						</div>
+
+						<div class="col-md-6">
+							<div class="product-entry">
+								<h2 class="section-title divider">{{product.name}}</h2>
+
+								<div class="products-content">
+
+									<h3 class="item-title">Specifications</h3>
+									<p>{{product.des}}</p>
+									<div class="author-name">{{product.stock}} left</div>
+									<div class="item-price">₹ {{product.price}}</div>
+								{% if user.is_superuser %} <!-- if user is admin -->
+									{% if product.stock > 0 %} <!-- if stock is present -->
+											<div class="btn-wrap">
+												<div class="author-name">Product in Stock</div>
+													<a	 href="{% url 'Shop:add_stock' product.id %}" class="btn-accent-arrow">Add stock<i class="icon icon-ns-arrow-right"></i></a>
+											</div>
+									{% else %}  <!-- if stock is empty -->
+											<div class="author-name">Out of Stock</div>
+												<div class="btn-wrap">
+													<a href="{% url 'Shop:add_stock' product.id %}" class="btn-accent-arrow">Add stock<i class="icon icon-ns-arrow-right"></i></a>
+											</div>
+
+									{% endif %}  <!-- end if for stock -->
+								{% else %}  <!-- if normal user -->
+									{% if product.stock > 0 %} <!-- if stock is present -->
+											<div class="btn-wrap">
+												<div class="author-name">Product in Stock</div>
+													<a href="{% url 'Cart:add_cart' product.id %}" class="btn btn-accent-arrow">Add to Cart<i class="icon icon-ns-arrow-right"></i></a>
+											</div>
+									{% else %}  <!-- if stock is empty -->
+											<div class="author-name">Out of Stock</div>
+<!--												<div class="btn-wrap">-->
+<!--													<a href="#" class="btn-accent-arrow">Add stock<i class="icon icon-ns-arrow-right"></i></a>-->
+											</div>
+									{% endif %}
+
+								{% endif %} <!-- end if for admin -->
+								</div>
+
+							</div>
+						</div>
+
+					</div>
+					<!-- / row -->
+
+				</div>
+
+			</div>
+		</div>
+	</section>
+
+{% endblock %}
