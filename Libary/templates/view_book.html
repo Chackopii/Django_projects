@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block content %}
+<body>
+<h1 class="text-center text-white">View book page</h1>
+<div class="container mt-3 text-light">
+<table class="table table-striped text-white table-bordered mx-auto">
+  <thead>
+    <tr>
+      <th scope="col">Cover</th>
+      <th scope="col">Title</th>
+      <th scope="col">Author</th>
+      <th scope="col">Language</th>
+      <th scope="col">Price</th>
+      <th scope="col">Page</th>
+      <th scope="col">Pdf</th>
+      <th scope="col">View</th>
+      <th scope="col">Edit</th>
+      <th scope="col">Delete</th>
+
+
+    </tr>
+  </thead>
+  <tbody>
+  {%  for  i   in   book %}
+    <tr>
+      <td><img src="{{i.cover.url}}" height="150" width="100" class="img-thumbnail"></td>
+      <td>{{i.title}}</td>
+      <td>{{i.author}}</td>
+      <td>{{i.Language}}</td>
+      <td>{{i.price}}</td>
+      <td>{{i.pages}}</td>
+      <td><a href=" {{i.pdf.url}}">Download</a></td>
+      <td><a href="{% url 'Books:details' i.id %}" class="btn btn-primary text-light">View</a></td>
+      <td><a href="{% url 'Books:edit' i.id %}"  class="btn btn-secondary text-light">Edit</a></td>
+      <td><a href="{% url 'Books:delete' i.id %}" class="btn btn-danger text-light">delete</a></td>
+
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+<!--{% for i in book %}-->
+<!--<ul class="text-white">-->
+<!--  <li>{{i.id}}: Book Details</li>-->
+<!--  <ul>-->
+<!--    <li>{{i.title}}</li>-->
+<!--    <li>{{i.author}}</li>-->
+<!--    <li>{{i.Language}}</li>-->
+<!--    <li>{{i.price}}</li>-->
+<!--    <li>{{i.pages}}</li>-->
+<!--    <li>{{i.cover}}</li>-->
+<!--    <li>{{i.pdf}}</li>-->
+<!--  </ul>-->
+<!--</ul>-->
+{% endfor %}
+</body>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1 class="text-center text-white">Register</h1>
+<div class="container mb-3 w-50">
+  <form method="POST" class="text-white">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label class="form-label">Username</label>
+      <input type="text" class="form-control" name="username" placeholder="Enter the username">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">First Name</label>
+      <input type="text" class="form-control" name="firstname" placeholder="Enter First Name">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Last Name</label>
+      <input type="text" class="form-control" name="lastname" placeholder="Enter Last Name">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Email</label>
+      <input type="email" class="form-control" name="email" placeholder="Enter Email">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Password</label>
+      <input type="password" class="form-control" name="pass1" placeholder="Enter Password">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Confirm Password</label>
+      <input type="password" class="form-control" name="pass2" placeholder="Confirm Password">
+    </div>
+
+    <div class="mb-3 mx-auto text-center">
+      <input class="btn btn-primary" type="submit" value="Register">
+    </div>
+
+  </form>
+</div>
+{% endblock %}

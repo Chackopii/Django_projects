@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+{% if user.is_authenticated %}
+<h1 class="text-center text-white">Welcome {{user.username}},</h1>
+{% else %}
+<h1 class="text-center text-white">Welcome</h1>
+{% endif %}
+{% endblock %}
+<!--<a href="{% url 'Books:home' %}" >Home</a>-->
+<!--<a href="{% url 'Books:add_book' %}" >Add page</a>-->
+<!--<a href="{% url 'Books:view_book' %}" >View page</a>-->
+<!--<a href="{% url 'Users:register' %}" >Register user</a>-->
+<!--<a href="{% url 'Users:login' %}" >Login user</a>-->
